@@ -29,6 +29,7 @@ requirements:
     - python
     - setuptools
     - cython
+    - cysignals
     - libsemigroups >=0.2.2
     - nose
     # pytest-cython # not yet on conda-forge
