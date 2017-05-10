@@ -1,7 +1,7 @@
 {% set name = "libsemigroups-python-bindings" %}
-{% set version = "0.2.2" %}
-{% set sha256 = "71ddb996d51c47dc881784816ef0b60280108d36d6111581fce07d4953ab1825" %}
-{% set repo = "https://github.com/james-d-mitchell/libsemigroups" %}
+{% set version = "0.0.1" %}
+{% set sha256 = "c150a286a11483ee426b29c83e208a9675b0ed21c601de342453bf58c1b27f02" %}
+{% set repo = "https://github.com/james-d-mitchell/libsemigroups-python-bindings" %}
 {% set home = "https://james-d-mitchell.github.io/libsemigroups/" %}
 
 package:
@@ -13,7 +13,7 @@ source:
   # branch instead
   #git_url: {{ repo }}.git
   #git_tag: python-bindings
-  url: {{ repo }}/archive/conda-test.tar.gz 
+  url: {{ repo }}/archive/v{{ version }}.tar.gz 
   sha256: {{ sha256 }}
 
 build:
@@ -21,7 +21,6 @@ build:
   skip: True  # [win]
   script:
     - export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
-    - cd python-bindings
     - python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
@@ -31,7 +30,7 @@ requirements:
     - setuptools
     - cython
     - libsemigroups >=0.2.2
-    - pytest-runner
+    - nose
     # pytest-cython # not yet on conda-forge
 
   run:
@@ -40,13 +39,14 @@ requirements:
 
 test:
   requires:
-    - pytest
+    - nose
   commands:
-    #- cd python-bindings && py.test
+    - python -m nose --with-doctest
+    
   imports: 
   - semigroups
   source_files:
-    - python-bindings/*
+    - semigroups/*
 
 about:
   home: {{ home }}
