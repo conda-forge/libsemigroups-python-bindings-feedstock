@@ -30,13 +30,13 @@ requirements:
     - setuptools
     - cython
     - cysignals
-    - libsemigroups >=0.2.2
+    - libsemigroups >=0.3.0
     - nose
     # pytest-cython # not yet on conda-forge
 
   run:
     - python
-    - libsemigroups >=0.2.2
+    - libsemigroups >=0.3.0
 
 test:
   requires:
