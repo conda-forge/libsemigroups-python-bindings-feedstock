@@ -1,18 +1,14 @@
 {% set name = "libsemigroups-python-bindings" %}
-{% set version = "0.0.1" %}
-{% set sha256 = "c150a286a11483ee426b29c83e208a9675b0ed21c601de342453bf58c1b27f02" %}
+{% set version = "0.3.0" %}
+{% set sha256 = "9c0691073fbb190a45cbe60d3ec4bf22f99e3ee1cc749b62ec9ed9b0e28366dc" %}
 {% set repo = "https://github.com/james-d-mitchell/libsemigroups-python-bindings" %}
-{% set home = "https://james-d-mitchell.github.io/libsemigroups/" %}
+{% set home = "https://james-d-mitchell.github.io/libsemigroups-python-bindings/" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  # The python bindings are not yet merged in master; fetch them from their git
-  # branch instead
-  #git_url: {{ repo }}.git
-  #git_tag: python-bindings
   url: {{ repo }}/archive/v{{ version }}.tar.gz 
   sha256: {{ sha256 }}
 
@@ -30,13 +26,13 @@ requirements:
     - setuptools
     - cython
     - cysignals
-    - libsemigroups >=0.2.2
+    - libsemigroups >=0.3.0
     - nose
-    # pytest-cython # not yet on conda-forge
 
   run:
     - python
-    - libsemigroups >=0.2.2
+    - cysignals
+    - libsemigroups >=0.3.0
 
 test:
   requires:
